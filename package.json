@@ -2,7 +2,7 @@
   "name": "svelte-parcel",
   "version": "1.0.0",
   "description": "Cellular automaton on Svelte + Parcell",
-  "main": "main.js",
+  "main": "index.html",
   "homepage": "https://vladagurets.github.io/game-of-life",
   "repository": "https://github.com/vladagurets/game-of-life",
   "scripts": {

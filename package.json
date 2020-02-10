@@ -1,0 +1,32 @@
+{
+  "name": "svelte-parcel",
+  "version": "1.0.0",
+  "description": "Cellular automaton on Svelte + Parcell",
+  "main": "main.js",
+  "scripts": {
+    "dev": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "keywords": [
+    "parcel",
+    "svelte",
+    "template",
+    "boilerplate",
+    "zeroconfiguration"
+  ],
+  "author": "",
+  "license": "ISC",
+  "browserslist": "> 2%",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-svelte": "^4.0.2"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "svelte": "^3.9.1"
+  },
+  "alias": {
+    "public": "./public",
+    "src": "./src"
+  }
+}

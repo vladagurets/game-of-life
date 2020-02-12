@@ -1,18 +1,25 @@
 <script>
   import Cell from './Cell.svelte'
   import { DEFAULT_CELL_SIZE } from 'src/constants';
-  import { cellSize, gridSize } from 'src/store.js'
+  import { cellSize, gridSize, grid, gameStatus } from 'src/store.js'
   import c from 'classnames'
 
   export let cellState
   export let index
-  
-  const getClasses = state => c({
-    'filled': state,
-    'empty': !state
+
+
+  const toggleCellState = () => {
+    if (!$gameStatus) {
+      $grid[index] = cellState ? 0 : 1
+    }
+  }
+
+  $: classes = c({
+    'filled': cellState,
+    'empty': !cellState,
+    'pointer': !$gameStatus
   })
 
-  $: classes = getClasses(cellState)
 </script>
 
 <style>
@@ -29,6 +36,14 @@
   .empty {
     opacity: .3;
   }
+
+  .pointer {
+    cursor: pointer;
+  }
 </style>
 
-<div style={`width: ${$cellSize}px; height: ${$cellSize}px;`} class={classes}/>
+<div
+  style={`width: ${$cellSize}px; height: ${$cellSize}px;`}
+  class={classes}
+  on:click={toggleCellState}
+/>

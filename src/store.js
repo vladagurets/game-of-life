@@ -7,4 +7,5 @@ export const grid = writable([])
 export const gridSize = writable(50)
 export const lifeSpeed = writable(900)
 export const cellSize = writable(10)
+export const gameStatus = writable(1)
 

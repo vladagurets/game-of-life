@@ -9,6 +9,7 @@
   import RefreshButton from './components/RefreshButton.svelte'
   import TrashButton from './components/TrashButton.svelte'
   import FigureButtons from './components/FigureButtons.svelte'
+  import PauseButton from './components/PauseButton.svelte'
 
   import {
     gamePattern,
@@ -16,6 +17,7 @@
     gridSize,
     lifeSpeed,
     cellSize,
+    gameStatus
   } from 'src/store.js'
 
   import { PATTERNS } from 'src/constants'
@@ -62,14 +64,23 @@
         newGrid[index] = PATTERNS[$gamePattern](cell, neighbours)
       })
     grid.set(newGrid)
-    loop()
+    $gameStatus && loop()
     }, 1000 - $lifeSpeed)
   }
 
   // Start $gridSize watching
-  const unsubscribeGridSize = gridSize.subscribe(value => {
+  const unsubscribeGridSize = gridSize.subscribe(nextVal => {
     destroyGame()
     initGame()
+  })
+  
+  // Start $gameStatus watching
+  const unsubscribeGameStatus = gameStatus.subscribe(nextVal => {
+    if (!nextVal) {
+      clearTimeout(gameTimeout)
+    } else {
+      loop()
+    }
 	})
 
   onMount(resetGame)
@@ -114,6 +125,7 @@
   </div>
   <div class="right-settings">
     <div class="buttons">
+      <PauseButton />
       <RefreshButton on:reset={resetGame} />
       <TrashButton />
     </div>

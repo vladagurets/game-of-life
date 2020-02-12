@@ -27,43 +27,34 @@ const getCoordinatesForCheck = (index, gridSize) => [
   index + gridSize, // x, y + 1
 ]
 
-export const drawFiguresInGrid = ({ grid, figure, count = 1, gridSize }) => {
+export const drawFiguresInGrid = ({ grid, figure, gridSize }) => {
   let _grid = [...grid]
-  let _count = 0
   let _figure = [...figure]
-  // Get size of figure
-  const figureLength = Math.sqrt(_figure.length)
-  const needReverse = Math.round(Math.random())
 
+  // Get random index of figure's start position
+  const rndIndex = getRandomInt(grid.length)
+
+  // Width and height of figure 
+  const figureLength = Math.sqrt(_figure.length)
+
+  // Reverse figure by y axis
+  const needReverse = Math.round(Math.random())
   if (needReverse) {
     _figure = _figure.reverse()
   }
 
-  while (count !== _count) {
-    let isCorrectPlace = true
-    const rndIndex = getRandomInt(grid.length)
-
-    for (let i = 0; i < figureLength; i++) {
-      for (let j = 0; j < figureLength; j++) {
-        if (grid[rndIndex + j + i * gridSize] !== 0) {
-          isCorrectPlace = false
-        }
+  for (
+    let i = rndIndex, k = 0;
+    i < rndIndex + figureLength * gridSize, k < figureLength**2;
+    i += gridSize, k += figureLength
+  ) {
+    for (let j = 0; j < figureLength; j++) {
+      if (typeof _grid[i + j] !== 'undefined' && _figure[k + j]) {
+        _grid[i + j] = _figure[k + j]
       }
-    }
-
-    if (isCorrectPlace) {
-      for (
-        let i = rndIndex, k = 0;
-        (i < rndIndex + figureLength * gridSize), (k < figureLength**2);
-        (i += gridSize), (k += figureLength)
-      ) {
-        for (let j = 0; j < figureLength; j++) {
-          _grid[i + j] = _figure[k + j]
-        }
-      }
-      _count++
     }
   }
+
   Object.assign(grid, _grid)
 }
 

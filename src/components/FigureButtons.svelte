@@ -24,6 +24,15 @@
     display: flex;
     flex-direction: column;
   }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+  .buttons > button {
+    width: 100%;
+  }
   button:not(:last-child) {
     margin-right: 10px;
   }
@@ -43,7 +52,7 @@
 
 <div class='root'>
   <label>Figures</label>
-  <div>
+  <div class="buttons">
     {#each FIGURES as item, i}
       <button on:click={drawFigure(item.figure)}>
         {item.title}

@@ -30,7 +30,8 @@
   }
 
   .filled {
-    background-color: #796c6c;
+    background-color: #FBFBF2;
+    opacity: .8;
   }
 
   .empty {

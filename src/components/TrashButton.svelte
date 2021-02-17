@@ -14,7 +14,6 @@
   button {
     padding: 0;
     border: 0;
-    opacity: .85;
     margin: 0 auto;
     display: block;
     transition: all .5s;
@@ -31,6 +30,6 @@
   }
 </style>
 
-<button title={ALT_TEXT} on:click={clearGrid}>
+<button class='btn-text'  title={ALT_TEXT} on:click={clearGrid}>
   <img src={trashIconPath} alt={ALT_TEXT} />
 </button>

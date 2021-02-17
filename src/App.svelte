@@ -11,6 +11,11 @@
   import FigureButtons from './components/FigureButtons.svelte'
   import PauseButton from './components/PauseButton.svelte'
 
+  // TODO:
+  // 1) Refactor controlls to select (like in sort-viz)
+  // 2) Refactor layout
+  // 3) Refactor to canvas
+
   import {
     gamePattern,
     grid,

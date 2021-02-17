@@ -15,7 +15,6 @@
   button {
     padding: 0;
     border: 0;
-    opacity: .75;
     margin: 0 auto;
     display: block;
     transition: all .5s;
@@ -32,6 +31,6 @@
   }
 </style>
 
-<button title={$gameStatus ? PAUSE_ALT_TEXT : CONTINUE_ALT_TEXT} on:click={toggleGameStatus}>
+<button class='btn-text'  title={$gameStatus ? PAUSE_ALT_TEXT : CONTINUE_ALT_TEXT} on:click={toggleGameStatus}>
   <img src={$gameStatus ? pauseIconPath : playIconPath} alt={$gameStatus ? PAUSE_ALT_TEXT : CONTINUE_ALT_TEXT} />
 </button>

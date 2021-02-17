@@ -3,6 +3,9 @@
   --btn-bg-color: transparent;
   --btn-border-color-active: #a9a9a9;
   --btn-bg-color-active: #f3f3f3;
+
+  --color: #fff8f4;
+	--bg-color: #333;
 }
 
 * {
@@ -12,25 +15,50 @@
 
 body {
   align-items: center;
-  background-color: #FFFFF2;
-  color: black;
+  background-color: var(--bg-color);
+  color: var(--color);
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
   margin: 0;
 }
 
+
+select, input, button {
+	height: 32px;
+	border-radius: 4px;
+	border: 1px solid var(--bg-color);
+}
+
 button {
-  cursor: pointer;
   text-transform: capitalize;
-  border: 1px solid var(--btn-border-color);
-  background-color: var(--btn-bg-color);
-  border-radius: 3px;
-  color: #232323;
+  cursor: pointer;
+}
+
+select:hover, input:hover, button:hover {
+	opacity: .8;
+}
+
+.btn-text {
+  background-color: transparent;
+  border: none;
   outline: none;
 }
 
-button:active, button:focus, button.active {
-  background-color: var(--btn-bg-color-active);
-  border-color: var(--btn-border-color-active);
+.github-link {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	cursor: pointer;
+}
+
+.github-img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: var(--color);
+	background-image: url('public/github.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 40px;
 }

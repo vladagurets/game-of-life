@@ -36,14 +36,6 @@
   button:not(:last-child) {
     margin-right: 10px;
   }
-  button:focus {
-    background-color: var(--btn-bg-color);
-    border-color: var(--btn-border-color);
-  }
-  button:active {
-    background-color: var(--btn-bg-color-active);
-    border-color: var(--btn-border-color-active);
-  }
   label {
     opacity: .75;
     margin-bottom: 5px;

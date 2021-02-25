@@ -2,33 +2,18 @@
   import { PATTERNS } from 'src/constants'
   import { gamePattern } from 'src/store.js'
 
-  const changePattern = pattern => () => {
-    gamePattern.set(pattern)
+  function onChange ({ target: { value }}) {
+    gamePattern.set(value)
   }
 </script>
 
-<style>
-  .root {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-  button:not(:last-child) {
-    margin-right: 10px;
-  }
-  label {
-    opacity: .75;
-    margin-bottom: 5px;
-  }
-</style>
-
-<div class='root'>
+<div class="form-item">
   <label>Pattern</label>
-  <div>
+  <select name='pattern' on:change={onChange}>
     {#each Object.keys(PATTERNS) as pattern, i}
-      <button on:click={changePattern(pattern)} class={pattern === $gamePattern ? 'active' : ''}>
-        {pattern}
-      </button>
+    <option value={pattern}>
+      {pattern}
+    </option>
     {/each}
-  </div>
+  </select>
 </div>

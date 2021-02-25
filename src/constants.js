@@ -205,38 +205,38 @@ export const CROSS_TEMPLATE = [
 
 export const FIGURES = [
   {
-    title: 'Galaxy',
+    title: 'galaxy',
     figure: GALAXY_TEMPLATE,
   },
   {
-    title: 'Glider',
+    title: 'glider',
     figure: GLIDER_TEMPLATE,
   },
   {
-    title: 'Gosper Gun',
+    title: 'gosper gun',
     figure: GOSPER_GUN_TEMPLATE,
   },
   {
-    title: 'Square',
+    title: 'square',
     figure: SQUARE_TEMPLATE
   },
   {
-    title: 'Circle',
+    title: 'circle',
     figure: CIRCLE_TEMPLATE
   },
   {
-    title: 'Smile',
+    title: 'smile',
     figure: SMILE_TEMPLATE
   },
   {
-    title: 'Line',
+    title: 'line',
     figure: LINE_TEMPLATE
   },
   {
-    title: 'Cross',
+    title: 'cross',
     figure: CROSS_TEMPLATE
   },
   {
-    title: 'Random'
+    title: 'random'
   }
 ]

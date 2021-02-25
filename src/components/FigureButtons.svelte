@@ -3,8 +3,11 @@
   import { grid, gridSize } from 'src/store.js'
   import { drawFiguresInGrid, fillGridWithRnd } from 'src/gridHelper'
 
-  const drawFigure = figure => () => {
+  let selectedFigureIndex = 0
+
+  function drawFigure () {
     const newGrid = [...$grid]
+    const figure = FIGURES[selectedFigureIndex].figure
     if (figure) {
       grid.set(drawFiguresInGrid({
         grid: newGrid,
@@ -16,39 +19,22 @@
     }
     grid.set(newGrid)
   }
+
+  function onFigureChange ({ target: { value }}) {
+    selectedFigureIndex = value
+  }
 </script>
 
-<style>
-  .root {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-  }
-  .buttons > button {
-    width: 100%;
-  }
-  button:not(:last-child) {
-    margin-right: 10px;
-  }
-  label {
-    opacity: .75;
-    margin-bottom: 5px;
-  }
-</style>
-
-<div class='root'>
-  <label>Figures</label>
-  <div class="buttons">
+<div class="form-item">
+  <label>Creature</label>
+  <select name='pattern' value={selectedFigureIndex} on:change={onFigureChange}>
     {#each FIGURES as item, i}
-      <button on:click={drawFigure(item.figure)}>
-        {item.title}
-      </button>
+    <option value={i}>
+      {item.title}
+    </option>
     {/each}
-  </div>
+  </select>
+  <button on:click={drawFigure}>
+    add
+  </button>
 </div>

@@ -31,7 +31,6 @@ select, input, button {
 }
 
 button {
-  text-transform: capitalize;
   cursor: pointer;
 }
 
@@ -39,10 +38,18 @@ select:hover, input:hover, button:hover {
 	opacity: .8;
 }
 
-.btn-text {
-  background-color: transparent;
-  border: none;
-  outline: none;
+.form-item {
+  display: flex;
+  align-items: center;
+}
+
+.form-item > input, .form-item > select {
+  flex: 1;
+}
+
+.form-item > label::after {
+  content: ':';
+  margin-right: 5px;
 }
 
 .github-link {

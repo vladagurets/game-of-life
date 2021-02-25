@@ -4,8 +4,6 @@
   import Cell from './components/Cell.svelte'
   import PatternSelector from './components/PatternSelector.svelte'
   import SpeedControl from './components/SpeedControl.svelte'
-  import CellSizeSelector from './components/CellSizeSelector.svelte'
-  import BoardSizeSelector from './components/BoardSizeSelector.svelte'
   import RefreshButton from './components/RefreshButton.svelte'
   import TrashButton from './components/TrashButton.svelte'
   import FigureButtons from './components/FigureButtons.svelte'
@@ -94,51 +92,66 @@
 <style>
   .root {
     width: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
   }
-  .left-settings, .right-settings {
-    align-self: center;
+
+  .settings {
+    flex: 1;
   }
-  .left-settings {
-    padding-left: 30px;
+
+  .settings {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
-  .right-settings {
-    padding-right: 30px;
+
+  .settings-content {
+    min-width: 250px;
   }
+
   .grid {
     display: grid;
     justify-self: center;
   }
-  .buttons {
-    display: flex;
-    width: 100px;
-    margin: 0 auto;
+
+  @media only screen and (max-width: 600px) {
+    .root {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .grid {
+      order: 1;
+    }
+
+    .settings {
+      margin-top: 50px;
+      order: 2;
+    }
   }
 </style>
 
 <div class='root'>
-  <div class="left-settings">
-    <PatternSelector />
-    <br />
-    <FigureButtons />
+  <div class="settings">
+    <div class="settings-content">
+      <div class="form-item">
+        <PauseButton />
+        <RefreshButton on:reset={resetGame} />
+        <TrashButton />
+      </div>
+      <br />
+      <PatternSelector />
+      <br />
+      <FigureButtons />
+      <br />
+      <SpeedControl />
+    </div>
   </div>
   <div style={getGridStyle($gridSize, $cellSize)} class='grid'>
     {#each $grid as cell, i}
       <Cell cellState={cell} index={i} />
     {/each}
   </div>
-  <div class="right-settings">
-    <div class="buttons">
-      <PauseButton />
-      <RefreshButton on:reset={resetGame} />
-      <TrashButton />
-    </div>
-    <br />
-    <SpeedControl />
-    <br />
-    <CellSizeSelector />
-    <br />
-    <BoardSizeSelector />
-  </div>
+  <div class="settings" />
 </div>

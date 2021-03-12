@@ -20,10 +20,3 @@ The "game" is actually a zero-player game, meaning that its evolution is determi
   <img src="https://github.com/vladagurets/game-of-life/blob/76d7182084007583f957714ffaa2eaa939cb1b6a/public/example.gif?raw=true" />
 </p>
 <br>
-
-## P.S.
-Project have been done for [Svelte's](https://svelte.dev/https://svelte.dev/) features demonstration.
-App has performance limitations because our playing field is array of **div-cells**. Sure that **canvas** would work better in that case but I preferred grid with divs because of I don't like to work with **canvas** 👺.
-
-Also there were configured [Github Workflow](https://github.com/features/actions) for 📦CI/CD🚚  to [Github Pages](https://pages.github.com/).
-
